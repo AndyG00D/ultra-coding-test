@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="card col-12">
+      <div class="card-body row no-gutters align-items-center">
+        <div class="col-auto">
+          <i class="fas fa-search h4 text-body"></i>
+        </div>
+        <div class="col">
+          <input class="form-control form-control form-control-borderless"
+                 [formControl]="search"
+                 type="search"
+                 placeholder="Search keywords">
+        </div>
+<!--        <div class="col-auto">-->
+<!--          <button class="btn btn-success" type="submit">Search</button>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container album py-5 bg-light">
+  <ng-container *ngIf="data && data.length > 0">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of data">
+        <div class="card mb-4 box-shadow">
+          <!--          <a [href]="item.url" target="_blank" >-->
+          <img class="card-img-top img-fluid"
+               style="height: 200px; width: 100%; display: block;"
+               [src]="item.images.fixed_height.url"
+               [alt]="item.title">
+          <!--          </a>-->
+          <div class="card-body">
+            <p class="card-title">{{item.title}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination
+          [collectionSize]="totalCount"
+          [page]="pagination"
+          (pageChange)="setPagination($event)"
+          [maxSize]="5"
+          [pageSize]="pageSize">
+        </ngb-pagination>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="row" *ngIf="search.value.length === 0">
+    Input keywords for finding images.
+  </div>
+
+  <div class="row" *ngIf="data && data.length === 0 && search.value.length > 0">
+    Sorry, nothing found. Please try again with some different keyword.
+  </div>
+</div>
+
+

@@ -1,0 +1,61 @@
+.cs-chip-list {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: stretch;
+  width: 100%;
+
+  &-input-wrapper {
+    height: auto;
+    flex: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: stretch;
+
+    &.focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+    }
+
+    & > * {
+      margin-left: 0.5rem;
+    }
+
+  }
+
+  &-badge {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+
+    .close {
+      font-size: 1rem;
+      margin-left: 0.3rem;
+
+      &:hover {
+        outline: none;
+      }
+    }
+  }
+
+  &-input {
+    min-width: 4rem;
+    flex: 1;
+    outline: none;
+    border: none;
+  }
+
+  &-actions {
+    margin-left: 0.5rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+}

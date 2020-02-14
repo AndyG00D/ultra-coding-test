@@ -1,0 +1,23 @@
+<div class="cs-chip-list">
+  <div class="form-control cs-chip-list-input-wrapper" [class.focus]="focused">
+        <span class="badge badge-secondary cs-chip-list-badge" *ngFor="let tag of value">
+          <span>#{{tag}}</span>
+          <button type="button" class="close" aria-label="Close" (click)="removeTag(tag)">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </span>
+    <input class="cs-chip-list-input"
+           #inputElement
+           [formControl]="inputControl"
+           (keydown.enter)="add(inputElement)"
+           (focusin)="changeFocus(true)"
+           (blur)="changeFocus(false)"
+           type="search"
+           [placeholder]="placeholder">
+  </div>
+
+  <div class="cs-chip-list-actions">
+    <button class="btn btn-success" (click)="add(inputElement)">Add</button>
+    <button class="btn" (click)="removeAll()">Clear</button>
+  </div>
+</div>

@@ -9,6 +9,8 @@
     "lint": "ng lint && stylelint src/**/*.*css && eslint \"./src/**/*.ts\"",
     "styleLint": "stylelint src/**/*.*css",
     "lint:fix": "stylelint \"src/**/*.*css\" --fix && eslint \"./src/**/*.ts\" --fix",
+    "prettier:check": "prettier '**/*.js' --list-different",
+    "prettier:fix": "prettier '**/*.js' --write",
     "test": "ng test",
     "e2e": "ng e2e"
   },
@@ -52,6 +54,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
+    "typescript": "~3.7.5",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "~2.3.0",
@@ -63,6 +66,6 @@
     "tslint": "~5.18.0",
     "tslint-consistent-codestyle": "^1.15.1",
     "tslint-no-focused-test": "^0.5.0",
-    "typescript": "~3.7.5"
+    "prettier": "^1.18.2"
   }
 }

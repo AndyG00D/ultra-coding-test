@@ -1,0 +1,32 @@
+.line-preloader {
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 2px;
+  position: relative;
+  margin: auto;
+  border-radius: 4px;
+  background-size: 20%;
+  background: #ccc linear-gradient(to right, green, green) repeat-y -25% 0;
+  animation: scroll 1.2s ease-in-out infinite;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes scroll {
+  50% {
+    background-size: 80%
+  }
+  100% {
+    background-position: 125% 0;
+  }
+}
+
+.preview-image {
+  height: 200px;
+  width: 100%;
+  display: block;
+}

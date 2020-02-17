@@ -10,7 +10,6 @@ describe('workspace-project App', () => {
 
   it('should navigate to page', () => {
     page.navigateTo();
-    page.log(page.getElementByClassName('alert').getText());
     expect(page.getElementByClassName('alert').getText()).toEqual('Input keywords for finding images.');
   });
 
@@ -35,7 +34,7 @@ describe('workspace-project App', () => {
     browser.sleep(500);
   });
 
-  it('should click to the pagination', () => {
+  it('should change pagination', () => {
     const prevValue = page.getElementByClassName('preview-image').getAttribute('src');
     browser.wait(
       page.getElementsByClassName('page-link').get(2).click()

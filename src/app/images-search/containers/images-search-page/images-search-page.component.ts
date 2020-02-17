@@ -36,7 +36,8 @@ export class ImagesSearchPageComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  public setPagination(value: number): void {
+  public setPageIndex(value: number): void {
+    console.log(value);
     return this.pageIndex$.next(value);
   }
 
@@ -69,7 +70,7 @@ export class ImagesSearchPageComponent implements OnInit, OnDestroy {
     return this.search.valueChanges.pipe(
       map((value: string[]) => value.join(' ')),
       distinctUntilChanged(),
-      tap(() => this.setPagination(1))
+      tap(() => this.setPageIndex(1))
     );
   }
 

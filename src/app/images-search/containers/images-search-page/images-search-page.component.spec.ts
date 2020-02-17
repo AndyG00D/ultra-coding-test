@@ -1,8 +1,8 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 import {ImagesSearchPageComponent} from './images-search-page.component';
 import {of, throwError} from 'rxjs';
 import {ImagesService} from '../../../core/services/image.service';
-import {Component, Optional, Self} from '@angular/core';
+import {Component, NO_ERRORS_SCHEMA, Optional, Self} from '@angular/core';
 import {ControlValueAccessor, NgControl} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 
@@ -70,7 +70,8 @@ describe('ImagesSearchPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ImagesSearchPageComponent, ChipListComponent],
-      providers: [{provide: ImagesService, useValue: imageServiceStub}]
+      providers: [{provide: ImagesService, useValue: imageServiceStub}],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   }));
@@ -92,25 +93,28 @@ describe('ImagesSearchPageComponent', () => {
     expect(alertElement.textContent).toEqual(' Input keywords for finding images. ');
   });
 
-  it('do first search request', () => {
+  it('should do first search request', fakeAsync(() => {
     spyOn(imageService, 'searchGifs').and.returnValue(of(mockResult));
     component.search.patchValue(['some_keyword']);
     fixture.detectChanges();
     expect(component.hasServerError).toEqual(false);
     expect(imageService.searchGifs).toHaveBeenCalled();
     expect(component.data).toEqual(mockResult.data);
-  });
+  }));
 
-  it('change pagination', () => {
-    spyOn(imageService, 'searchGifs').and.returnValue(of(mockResultSecondPage));
+  it('should change pagination', fakeAsync(() => {
+    const spySearchRequest = spyOn(imageService, 'searchGifs');
+    spySearchRequest.and.returnValue(of(mockResult));
+    component.search.patchValue(['some_keyword']);
+    spySearchRequest.and.returnValue(of(mockResultSecondPage));
     expect(component.pageIndex).toEqual(1);
-    component.setPagination(2);
+    component.setPageIndex(2);
     fixture.detectChanges();
+    expect(component.hasServerError).toEqual(false);
     expect(component.pageIndex).toEqual(2);
     expect(imageService.searchGifs).toHaveBeenCalled();
     expect(component.data).toEqual(mockResultSecondPage.data);
-    expect(component.hasServerError).toEqual(false);
-  });
+  }));
 
   it('should do search request with empty result', () => {
     spyOn(imageService, 'searchGifs').and.returnValue(of(mockEmptyResult));

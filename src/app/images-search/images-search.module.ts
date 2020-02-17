@@ -5,7 +5,7 @@ import { ImagesSearchRoutingModule } from './images-search-routing.module';
 import {ImagesSearchPageComponent} from './containers/images-search-page/images-search-page.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ChipListModule} from '../shared/chip-list/chip-list.module';
+import {ChipListControlModule} from '../shared/chip-list/chip-list-control.module';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import {ChipListModule} from '../shared/chip-list/chip-list.module';
     NgbPaginationModule,
     FormsModule,
     ReactiveFormsModule,
-    ChipListModule
+    ChipListControlModule
   ]
 })
 export class ImagesSearchModule { }

@@ -10,13 +10,13 @@ import {ControlValueAccessor, FormControl, NgControl} from '@angular/forms';
 import {noop} from 'rxjs';
 
 @Component({
-  selector: 'uct-chip-list',
-  templateUrl: './chip-list.component.html',
-  styleUrls: ['./chip-list.component.scss'],
+  selector: 'uct-chip-list-control',
+  templateUrl: './chip-list-control.component.html',
+  styleUrls: ['./chip-list-control.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class ChipListComponent implements OnDestroy, ControlValueAccessor {
+export class ChipListControlComponent implements OnDestroy, ControlValueAccessor {
   @Input() public placeholder: string = '';
   public focused: boolean = false;
   public inputControl: FormControl = new FormControl();

@@ -1,17 +1,17 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ChipListComponent} from './chip-list.component';
+import {ChipListControlComponent} from './chip-list-control.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('TagListComponent', () => {
-  let component: ChipListComponent;
-  let fixture: ComponentFixture<ChipListComponent>;
+  let component: ChipListControlComponent;
+  let fixture: ComponentFixture<ChipListControlComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ChipListComponent],
+      declarations: [ChipListControlComponent],
       schemas: [NO_ERRORS_SCHEMA],
       imports: [
         ReactiveFormsModule,
@@ -22,7 +22,7 @@ describe('TagListComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChipListComponent);
+    fixture = TestBed.createComponent(ChipListControlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

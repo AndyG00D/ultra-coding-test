@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChipListComponent } from './chip-list.component';
+import { ChipListControlComponent } from './chip-list-control.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ChipListComponent],
-  exports: [ChipListComponent],
+  declarations: [ChipListControlComponent],
+  exports: [ChipListControlComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
   ]
 })
-export class ChipListModule { }
+export class ChipListControlModule { }

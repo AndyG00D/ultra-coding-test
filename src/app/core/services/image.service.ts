@@ -11,12 +11,12 @@ import {ImagesHttpAdapter} from '../http-adapters/audiences-http-adapter';
 })
 export class ImagesService {
 
-  constructor(private http: HttpClient) {
+  constructor(public http: HttpClient) {
   }
 
   public searchGifs(params: { [key: string]: string }): Observable<IList<IGif>> {
     const preparedParams = {...ApiConfig.commonHttpParams, ...params};
-    return this.http.get<any>(`${ApiConfig.gifsSearchPath}`, {params: preparedParams})
+    return this.http.get<{data: IGifApi[], pagination: IPaginationApi}>(`${ApiConfig.gifsSearchPath}`, {params: preparedParams})
       .pipe(
         map((response: { data: IGifApi[], pagination: IPaginationApi }) => ({
           data: response.data.map((item: IGifApi) => ImagesHttpAdapter.transformToGifItem(item)),
